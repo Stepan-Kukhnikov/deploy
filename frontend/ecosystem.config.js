@@ -14,7 +14,7 @@ module.exports = {
       repo: 'git@github.com:Stepan-Kukhnikov/deploy-mesto.git',
       path: DEPLOY_PATH,
       key: '~/.ssh/vm_key',
-      'post-deploy': 'cd frontend && npm ci && NODE_OPTIONS=--openssl-legacy-provider npm run build',
+      'post-deploy': 'cd frontend && npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build',
     },
   },
 };

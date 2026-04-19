@@ -23,7 +23,7 @@ module.exports = {
       repo: 'git@github.com:Stepan-Kukhnikov/deploy.git',
       path: DEPLOY_PATH,
       'pre-deploy': `scp -i ~/.ssh/vm_key ./backend/.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend/.env`,
-      'post-deploy': 'cd backend && npm install && npm run build && pm2 reload ../ecosystem.config.js --env production',
+      'post-deploy': 'cd backend && npm install && npm run build && cd .. && npm install && pm2 reload ecosystem.config.js --env production',
       key: '~/.ssh/vm_key',
     },
   },

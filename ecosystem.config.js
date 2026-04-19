@@ -15,16 +15,16 @@ module.exports = {
     },
   }],
 
-  deploy: {
+deploy: {
     production: {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
       repo: 'git@github.com:Stepan-Kukhnikov/deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy-local': `scp -i ~/.ssh/vm_key ./backend/.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend/.env`,
-      'post-deploy': 'cd backend && npm install && npm run build && cd ../frontend && npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build && cd .. && pm2 reload ecosystem.config.js --env production',
       key: '~/.ssh/vm_key',
+      'pre-deploy-local': `scp -i ~/.ssh/vm_key ./backend/.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend/.env`,
+      'post-deploy': 'cd backend && npm install && npm run build && cd ../frontend && npm install && NODE_OPTIONS=--openssl-legacy-provider npm run build && cd .. && npm install && pm2 reload ecosystem.config.js --env production',
     },
-  },
-};
+ },
+}
